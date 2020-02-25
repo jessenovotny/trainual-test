@@ -4,6 +4,7 @@ ruby '2.5.7'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
+gem 'faker'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
