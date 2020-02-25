@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = params[:query] ? user_query : User.paginate(page: params[:page])
   end
 
   def show
@@ -39,11 +39,27 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def user_params
-      params.require(:user).permit(:name, :email, :title, :phone, :status)
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :title, :phone, :status)
+  end
+
+  def user_query
+    query = params[:query]
+    User.where("email LIKE ?
+      OR name LIKE ?
+      OR status LIKE ?
+      OR phone LIKE ?
+      OR title LIKE ?",
+      "%#{query}%", 
+      "%#{query}%", 
+      "%#{query}%", 
+      "%#{query}%", 
+      "%#{query}%").
+      paginate(page: params[:page])
+  end
 end

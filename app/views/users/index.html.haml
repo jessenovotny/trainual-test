@@ -1,5 +1,10 @@
 %h1 Listing users
 
+=form_tag '/users', method: 'GET' do
+  .field
+    =text_field_tag :query
+  .actions
+    =submit_tag 'Search'
 %table
   %thead
     %tr
