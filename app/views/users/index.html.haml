@@ -25,10 +25,7 @@
             %td= user.phone
             %td{status_color(user)}= user.status
             %td
-              = link_to 'Show', user
-              ='/'
               = link_to 'Edit', edit_user_path(user)
-              ='/'
               = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
 
 %script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js')
