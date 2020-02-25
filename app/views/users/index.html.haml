@@ -1,37 +1,40 @@
-%h1 Listing users
+.container
+  .row
+    %h1 Listing users
+  .row
+    =form_tag '/users', method: 'GET' do
+      .field
+        =text_field_tag :query
+      .actions
+        =submit_tag 'Search'
+  .row
+    %table.table.table-sm.w-auto
+      %thead
+        %tr
+          %th Last updated
+          %th Name
+          %th Email
+          %th Title
+          %th Phone
+          %th Status
+          %th Actions
 
-=form_tag '/users', method: 'GET' do
-  .field
-    =text_field_tag :query
-  .actions
-    =submit_tag 'Search'
-%table
-  %thead
-    %tr
-      %th Last updated
-      %th Name
-      %th Email
-      %th Title
-      %th Phone
-      %th Status
-      %th
-      %th
-      %th
-
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td= user.updated_at
-        %td= user.name
-        %td= user.email
-        %td= user.title
-        %td= user.phone
-        %td= user.status
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-= will_paginate @users
-%br
-= link_to 'New User', new_user_path
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.last_updated
+            %td= user.name
+            %td= user.email
+            %td= user.title
+            %td= user.phone
+            %td= user.status
+            %td
+              = link_to 'Show', user
+              ='/'
+              = link_to 'Edit', edit_user_path(user)
+              ='/'
+              = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+  .row
+    = will_paginate @users
+  .row
+    = link_to 'New User', new_user_path
