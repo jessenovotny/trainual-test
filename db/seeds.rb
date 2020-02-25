@@ -1,6 +1,6 @@
 statuses = ['active', 'inactive']
 users = []
-1000.times.map do
+1000.times do
   users << {
     name: Faker::Name.name,
     phone: Faker::PhoneNumber.phone_number,
