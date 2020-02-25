@@ -1,14 +1,10 @@
 .container
   .row
-    %h1 Listing users
+    %h1 All users
   .row
-    =form_tag '/users', method: 'GET' do
-      .field
-        =text_field_tag :query
-      .actions
-        =submit_tag 'Search'
+    = link_to 'New User', new_user_path
   .row
-    %table.table.table-sm.w-auto
+    %table.table-striped.table-bordered.table-sm.w-auto#data-table
       %thead
         %tr
           %th Last updated
@@ -27,14 +23,16 @@
             %td= user.email
             %td= user.title
             %td= user.phone
-            %td= user.status
+            %td{status_color(user)}= user.status
             %td
               = link_to 'Show', user
               ='/'
               = link_to 'Edit', edit_user_path(user)
               ='/'
               = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
-  .row
-    = will_paginate @users
-  .row
-    = link_to 'New User', new_user_path
+
+%script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js')
+%script(src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js')
+%style(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css')
+%style(src='https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css')
+%script= render 'table.js'

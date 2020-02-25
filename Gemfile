@@ -14,7 +14,6 @@ gem 'turbolinks', '~> 5'
 gem 'pry'
 gem 'puma', '~> 4.1'
 gem 'webpacker', '~> 4.0'
-gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
