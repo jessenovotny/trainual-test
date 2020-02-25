@@ -6,20 +6,21 @@
         - @user.errors.full_messages.each do |message|
           %li= message
 
-  .field
+  .field.form-group
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: 'form-control'
+  .field.form-group
     = f.label :email
-    = f.text_field :email
-  .field
+    = f.text_field :email, class: 'form-control'
+  .field.form-group
     = f.label :title
-    = f.text_field :title
-  .field
+    = f.text_field :title, class: 'form-control'
+  .field.form-group
     = f.label :phone
-    = f.text_field :phone
-  .field
+    = f.text_field :phone, class: 'form-control'
+  .field.form-group
     = f.label :status
-    = f.text_field :status
+    = f.text_field :status, class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = link_to 'Back', users_path, class: 'btn btn-outline-secondary', role: 'button'
+    = f.button 'Save', class: 'btn btn-primary'

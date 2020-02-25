@@ -4,21 +4,21 @@
   .row
     = link_to 'New User', new_user_path
   .row
-    %table.table-striped.table-bordered.table-sm.w-auto#data-table
+    %table.table-striped.table-bordered.table-sm#data-table
       %thead
         %tr
-          %th Last updated
+          %th Last Updated
           %th Name
           %th Email
           %th Title
-          %th Phone
+          %th Phone Number
           %th Status
           %th Actions
 
       %tbody
         - @users.each do |user|
           %tr
-            %td= user.last_updated
+            %td= last_updated(user)
             %td= user.name
             %td= user.email
             %td= user.title

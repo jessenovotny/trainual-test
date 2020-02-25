@@ -1,1 +1,3 @@
-$('#data-table').DataTable();
+$('#data-table').DataTable({
+  "columnDefs": {"width": "20%"}
+});
