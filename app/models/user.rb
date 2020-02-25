@@ -3,8 +3,4 @@ class User < ApplicationRecord
   validates :email, :name, :status, :phone, presence: true
   validates_uniqueness_of :email
   validates :status, inclusion: {in: ['active', 'inactive']}
-
-  def last_updated
-    updated_at.strftime("%-d/%-m/%y %-l:%M %p")
-  end
 end

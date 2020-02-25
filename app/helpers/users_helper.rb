@@ -6,4 +6,8 @@ module UsersHelper
   def active?(user)
     user.status == 'active'
   end
+
+  def last_updated(user)
+    user.updated_at.strftime("%-d/%-m/%y %-l:%M %p")
+  end
 end
